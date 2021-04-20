@@ -1,0 +1,60 @@
+.page-num {
+    width: 45px !important;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+NavDropdown{
+  color:white;
+  font-weight:bold;
+  background-color: black;
+}
+
+
+.container-middle{
+  background-color: white;
+}
+
+.bottom-container{
+
+  padding:500 0 500 0;
+}
+
+.big-heading {
+  color:white;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
+.custom-padding{
+  padding-top:150px;
+  padding-left:50px;
+  padding-right:50px;
+}
+
+.row-padding{
+  padding-bottom:80px;
+  padding-left:500px;
+}
+
+.col-padding{
+  padding-bottom:50px;
+}
+
+.custom-padding{
+  padding: 7% 15%;
+}
+
+.social-icon {
+  margin: 20px 10px;
+}
+
+.container-middleb{
+  background-color: #d8e3e7;
+}
+
+.middleb-padding{
+  padding:5% 3%;
+}
