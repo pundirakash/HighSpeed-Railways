@@ -4,6 +4,8 @@ package com.project.trainservice.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,14 +32,14 @@ public class TrainController {
 	
 	@PostMapping("/addTrain")
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-	public String addTrain(@RequestBody Train train) {
+	public String addTrain(@Valid @RequestBody Train train) {
 		return trainService.create(train);
 		
 	}
 	
 	@PutMapping("/updateTrain")
 	@PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_USER')")
-	public String updateTrain(@RequestBody Train train) {
+	public String updateTrain(@Valid @RequestBody Train train) {
 		return trainService.update(train);
 		
 	}
@@ -49,12 +51,12 @@ public class TrainController {
 	}
 	
 	@PostMapping("/queryTrains")
-	public List<Train> queryTrains(@RequestBody Search search){
+	public List<Train> queryTrains(@Valid @RequestBody Search search){
 		return trainService.find(search.getSourceStation(),search.getDestinationStation(),search.getJourneyDate());
 	}
 	
 	@GetMapping("/findById/{id}")
-	public Optional<Train> findTrainById(@PathVariable int id) {
+	public Optional<Train> findTrainById(@Valid @PathVariable int id) {
 		return trainService.findTrainById(id);
 	}
 	

@@ -6,6 +6,7 @@ import { faList} from '@fortawesome/free-solid-svg-icons'
 import {connect} from 'react-redux';
 import {getBookingById} from '../../services/index'
 import ReactLoading from 'react-loading'
+import India from '../../assets/images/India.jpg'
 
 class BookingStatus extends Component {
 
@@ -67,6 +68,8 @@ class BookingStatus extends Component {
   </tbody>
 </Table>
       </Card.Body>
+      <h1>Do you Know?</h1>
+      <h2>"This website is purely made in India by an Indian"</h2>
       </Card>
     )
   }

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -57,7 +59,7 @@ public class UserController {
 	private JwtUtil jwtTokenUtil;
 	
 	@PostMapping("/registerUser")
-	public String addUser(@RequestBody User user) {
+	public String addUser(@Valid @RequestBody User user) {
 		user.setRoles(UserConstant.DEFAULT_ROLE);
 		String encryptedPwd=passwordEncoder.encode(user.getPassword());
 		user.setPassword(encryptedPwd);
@@ -123,7 +125,7 @@ public class UserController {
 	
 	@PutMapping("updateUser")
 	@PreAuthorize("hasAuthority('ROLE_USER')")
-	String updateUser(@RequestBody User user,Principal principal) {
+	String updateUser(@Valid @RequestBody User user,Principal principal) {
 			userService.update(user,principal);
 			return "User updated Successfully";
 		

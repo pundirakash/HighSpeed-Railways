@@ -3,20 +3,26 @@ package com.project.trainservice.model;
 
 import java.util.List;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
+@Document(collection="Users")
 public class User {
 	@Transient
 	public static final String SEQUENCE_NAME="user_sequence";
 	@Id
 	private int id;
+	@Size(min=2,max=30)
 	private String userName;
 	private String password;
+	@Email
 	private String email;
-	private boolean active;
+	private boolean active=true;
 	private String roles;
 	private List<Booking> userbookings;
 	public User() {

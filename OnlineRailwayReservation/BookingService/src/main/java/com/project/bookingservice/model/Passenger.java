@@ -1,11 +1,14 @@
 package com.project.bookingservice.model;
 
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 
 public class Passenger {
 	
 	@Id
 	private String id;
+	@Size(min=1,max=30)
 	private String name;
 	private int age;
 	private String gender;

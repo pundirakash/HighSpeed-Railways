@@ -1,5 +1,6 @@
 package com.project.userservice.model;
 
+
 import org.springframework.data.annotation.Id;
 
 public class Passenger {

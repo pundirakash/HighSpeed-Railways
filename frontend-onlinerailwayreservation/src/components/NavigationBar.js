@@ -63,7 +63,7 @@ class NavigationBar extends Component {
             <>
                 <Nav className="mr-auto" style={{"padding-left":20}}>
                     <Link to={"trainList"} className="nav-link">Train List</Link>
-                    <Link to={"bookingList"} className="nav-link">Your Bookings</Link>
+                    <Link to={"bookingList"} className="nav-link">My Bookings</Link>
                 </Nav>
                 <Nav>
                 <NavDropdown title=<FontAwesomeIcon icon={faUser}/> className="">

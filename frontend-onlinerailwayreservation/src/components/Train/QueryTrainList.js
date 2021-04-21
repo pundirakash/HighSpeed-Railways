@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../Style.css';
 import {Link} from 'react-router-dom';
-import {Card,Table} from 'react-bootstrap';
+import {Card,Table,Container,Col,Row} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList} from '@fortawesome/free-solid-svg-icons'
 import {connect} from 'react-redux';
@@ -48,9 +48,9 @@ class QueryTrainList extends Component {
     return (
       <div>
       {this.state.isLoading ? (
-        <div>
-            <ReactLoading type={"bars"} color={"white"} />
-          </div>
+        <Row allign="center">
+            <ReactLoading type={"bars"} color={"white"}/>
+          </Row>
         ) :(
       <Card className={"bg-light text-dark"}>
       <Card.Header><FontAwesomeIcon icon={faList} /> Train List</Card.Header>

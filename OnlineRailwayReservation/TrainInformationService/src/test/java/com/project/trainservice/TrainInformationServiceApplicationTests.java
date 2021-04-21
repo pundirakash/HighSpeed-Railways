@@ -73,6 +73,7 @@ public class TrainInformationServiceApplicationTests {
 	@Test
 	public void updateTest() {
 		Train train=new Train(1,"Rajdhani","A58","NDLS","SEC",1856.4,100,"2021-04-02","1500","1600","active");
+		
 		when(trainRepository.save(train)).thenReturn(train);
 		assertEquals("Successfully updated train",trainService.update(train));
 	}

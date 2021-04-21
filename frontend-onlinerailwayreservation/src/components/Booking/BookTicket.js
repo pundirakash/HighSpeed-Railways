@@ -135,7 +135,7 @@ bookTicket=()=>{
 }
 
 homePage=()=>{
-  return this.props.history.push("/");
+  return this.props.history.push("/bookingSuccess");
 };
 
 passengerChange=event=>{
@@ -157,7 +157,7 @@ passengerChange=event=>{
           </div>
         ) :(
       <Card className={"border border-dark bg-light text-dark"}>
-      <Card.Header>Complete your booking</Card.Header>
+      <Card.Header className="">Complete your booking</Card.Header>
       <Card.Body>
       <Table striped bordered hover variant="light">
   <thead>

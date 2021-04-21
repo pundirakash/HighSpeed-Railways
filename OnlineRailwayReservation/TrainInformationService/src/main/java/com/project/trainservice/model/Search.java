@@ -1,9 +1,16 @@
 package com.project.trainservice.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class Search {
-	
+	@NotBlank
+	@Size(min=3,max=40)
 	private String sourceStation;
+	@NotBlank
+	@Size(min=3,max=40)
 	private String destinationStation;
+	@NotBlank
 	private String journeyDate;
 	public String getSourceStation() {
 		return sourceStation;

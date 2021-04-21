@@ -3,6 +3,9 @@ package com.project.userservice.model;
 
 import java.util.List;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,8 +16,10 @@ public class User {
 	public static final String SEQUENCE_NAME="user_sequence";
 	@Id
 	private int id;
+	@Size(min=2,max=30)
 	private String userName;
 	private String password;
+	@Email
 	private String email;
 	private boolean active=true;
 	private String roles;

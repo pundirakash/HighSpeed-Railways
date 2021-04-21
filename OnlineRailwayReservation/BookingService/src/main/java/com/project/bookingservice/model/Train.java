@@ -1,5 +1,8 @@
 package com.project.bookingservice.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,19 +10,32 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 
 
+@Document(collection="Trains")
 public class Train {
-	
+	@Transient
+	public static final String SEQUENCE_NAME="train_sequence";
 	@Id
 	private int id;
+	@NotBlank
 	private String trainId;
+	@NotBlank
+	@Size(min=3,max=40)
 	private String name;
+	@NotBlank
+	@Size(min=2,max=40)
 	private String sourceStation;
+	@NotBlank
+	@Size(min=2,max=40)
 	private String destinationStation;
 	private double fare;
 	private int capacity;
+	@NotBlank
 	private String journeyDate;
+	@NotBlank
 	private String arrives;
+	@NotBlank
 	private String departs;
+	@NotBlank
 	private String status;
 	
 	
