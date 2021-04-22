@@ -67,7 +67,8 @@ public class TrainServiceImpl implements TrainService {
 	}
 	
 	public void deleteTrain(int id) {
-		if(trainRepository.findById(id).isEmpty()==true) {
+		Optional<Train> opt= trainRepository.findById(id);
+		if(opt.isEmpty()==true) {
 			throw new TrainNotFoundException("Train with id "+id+" not found");
 		}
 		else {

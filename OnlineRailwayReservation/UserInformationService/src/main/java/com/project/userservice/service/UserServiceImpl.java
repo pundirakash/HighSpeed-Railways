@@ -24,30 +24,7 @@ public class UserServiceImpl implements UserService {
 		userRepository.insert(user);
 		
 	}
-//
-//
-//	public void update(User user) {
-//		userRepository.save(user);
-//		
-//	}
-//
-//
-//	public void delete(String emailId) {
-//		userRepository.deleteByEmailId(emailId);
-//		
-//	}
-//
-//
-//	public User find(String emailId) {
-//		return userRepository.findByEmailId(emailId);
-//	}
-//
-//
-//	public List<User> findAll() {
-//		
-//		return userRepository.findAll();
-//	}
-//
+
 
 	@Override
 	public Optional<User> findByUserName(String userName) {

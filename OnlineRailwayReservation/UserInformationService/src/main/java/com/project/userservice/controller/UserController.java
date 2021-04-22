@@ -125,7 +125,7 @@ public class UserController {
 	
 	@PutMapping("updateUser")
 	@PreAuthorize("hasAuthority('ROLE_USER')")
-	String updateUser(@Valid @RequestBody User user,Principal principal) {
+	String updateUser(@RequestBody User user,Principal principal) {
 			userService.update(user,principal);
 			return "User updated Successfully";
 		

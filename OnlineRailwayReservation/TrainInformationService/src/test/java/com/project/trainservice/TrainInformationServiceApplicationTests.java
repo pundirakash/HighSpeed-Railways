@@ -73,16 +73,19 @@ public class TrainInformationServiceApplicationTests {
 	@Test
 	public void updateTest() {
 		Train train=new Train(1,"Rajdhani","A58","NDLS","SEC",1856.4,100,"2021-04-02","1500","1600","active");
-		
+		Optional<Train> opt=Optional.ofNullable(train);
 		when(trainRepository.save(train)).thenReturn(train);
+		when(trainRepository.findById(train.getId())).thenReturn(opt);
 		assertEquals("Successfully updated train",trainService.update(train));
 	}
 	
 	@Test
 	public void deleteTrainTest() {
 		Train train=new Train(1,"Rajdhani","A58","NDLS","SEC",1856.4,100,"2021-04-02","1500","1600","active");
-		int trainId=train.getId();
-		trainService.deleteTrain(trainId);
+		Optional<Train> opt=Optional.ofNullable(train);
+		when(trainRepository.save(train)).thenReturn(train);
+		when(trainRepository.findById(train.getId())).thenReturn(opt);
+		trainService.deleteTrain(train.getId());
 		verify(trainRepository,times(1)).deleteById(train.getId());
 	}
 	

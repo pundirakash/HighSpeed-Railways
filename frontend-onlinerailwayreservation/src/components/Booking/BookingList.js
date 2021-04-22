@@ -43,7 +43,7 @@ class BookingList extends Component {
         }else{
           this.setState({"show":false});
         }
-    },1000);
+    },1500);
   };
 
   render() {
