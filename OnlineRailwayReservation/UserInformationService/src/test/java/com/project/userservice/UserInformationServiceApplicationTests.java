@@ -34,6 +34,9 @@ public class UserInformationServiceApplicationTests {
 	@Autowired
 	UserService userService;
 	
+	@MockBean
+	Principal principal;
+	
 	@Test
 	public void createTest() {
 		List<Booking> list=new ArrayList<Booking>();
@@ -76,4 +79,16 @@ public class UserInformationServiceApplicationTests {
 		
 		assertEquals(1,userService.findAll().size());
 	}
+	
+	@Test
+	public void getUserBookingsTest() {
+		List<Booking> list=new ArrayList<Booking>();
+		User user=new User(1,"user1","pwd1","a@gmail.com",true,"ROLE_USER",list);
+		Optional<User> opt= Optional.of(user);
+		when(principal.getName()).thenReturn("user1");
+		when(userRepository.findByUserName(principal.getName())).thenReturn(opt);
+		assertEquals(0,userService.getUserBookings(principal).size());
+		
+	}
 }
+

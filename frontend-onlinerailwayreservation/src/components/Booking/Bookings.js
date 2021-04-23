@@ -29,7 +29,7 @@ class Bookings extends Component {
             bookings:booking
           });
         }
-    },1000)
+    },1700)
   }
 
 

@@ -23,7 +23,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import com.project.bookingservice.model.Booking;
 import com.project.bookingservice.model.Passenger;
@@ -58,24 +57,24 @@ public class BookingServiceApplicationTests {
     	Train train=new Train(1,"Rajdhani","A58","NDLS","SEC",1856.4,100,"2021-04-02","1500","1600","active");
     	
     	String token="abcd";
-    	Booking booking=new Booking(1,train,passengers,"active");
+    	Booking booking1=new Booking(1,train,passengers,"active");
 
-		Optional<Booking> opt=Optional.of(booking);
-    	List<Booking> list=Stream.of(booking).collect(Collectors.toList());
+		Optional<Booking> opt3=Optional.ofNullable(booking1);
+    	List<Booking> list=Stream.of(booking1).collect(Collectors.toList());
     	User user=new User(1,"user1","pwd1","a@gmail.com",true,"ROLE_USER",list);
     	
     	HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", token);
-		
+		when(principal.getName()).thenReturn("user1");
 		when(restTemplate.getForObject("http://TrainInformationService/trainApi/v1/findById/"+train.getId(),Train.class)).thenReturn(train);
 		HttpEntity <Train> entity=new HttpEntity<Train>(train,headers);
 		when(restTemplate.exchange("http://TrainInformationService/trainApi/v1/updateTrain",HttpMethod.PUT, entity, String.class)).thenReturn(new ResponseEntity<String>("Success",HttpStatus.OK));
-		when(bookingRepository.insert(booking)).thenReturn(booking);
-		when(bookingRepository.findById(1)).thenReturn(opt);
+		when(bookingRepository.insert(booking1)).thenReturn(booking1);
+		when(bookingRepository.findById(booking1.getId())).thenReturn(opt3);
 		when(restTemplate.getForObject("http://UserInformationService/user/findByUserName/"+principal.getName(),User.class)).thenReturn(user);
 		HttpEntity <User> entity1=new HttpEntity<User>(user,headers);
 		when(restTemplate.exchange("http://UserInformationService/user/updateUser", HttpMethod.PUT,entity1,String.class)).thenReturn(new ResponseEntity<String>("Success",HttpStatus.OK));
-		assertEquals("Ticket booked with id "+booking.getId()+" for "+user.getUserName(),bookingService.addBooking(booking,token,principal));
+		assertEquals("Ticket booked with id "+booking1.getId()+" for "+principal.getName(),bookingService.addBooking(booking1,token,principal));
 		
 	}
     
