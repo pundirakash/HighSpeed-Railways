@@ -23,7 +23,7 @@ class Register extends Component {
                 } else {
                     this.resetRegisterForm();
                 }
-            }, 1500);
+            }, 2000);
         };
 
 

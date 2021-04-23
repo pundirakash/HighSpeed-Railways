@@ -210,6 +210,7 @@ passengerChange=event=>{
 <Form.Control required autoComplete="off" type="text" value={gender} name="gender"  onChange={this.passengerChange} className={"bg-light text-dark"} as="select">
 <option value="Male" name="gender">Male</option>
 <option value="Female" name="gender">Female</option>
+<option value="Others" name="gender">Others</option>
 </Form.Control>
 </Form.Group>
 

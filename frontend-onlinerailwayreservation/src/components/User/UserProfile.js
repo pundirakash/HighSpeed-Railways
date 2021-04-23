@@ -16,6 +16,7 @@ class UserProfile extends React.Component {
       userName:'',
       email:'',
       password:'',
+      userbookings:[],
       isLoading:true
     }
     this.userChange=this.userChange.bind(this);
@@ -44,6 +45,7 @@ getUser=()=>{
           email:user.email,
           password:user.password,
           role:user.roles,
+          userbookings:user.userbookings,
           isLoading:false
 
         });
@@ -60,7 +62,8 @@ updateUser=event=>{
     userName:this.state.userName,
     email:this.state.email,
     password:this.state.password,
-    roles:this.state.role
+    roles:this.state.role,
+    userbookings:this.state.userbookings
   };
   this.props.updateUser(user);
   setTimeout(()=>{
