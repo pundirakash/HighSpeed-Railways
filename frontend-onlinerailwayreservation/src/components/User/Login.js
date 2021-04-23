@@ -25,7 +25,7 @@ validateUser = () => {
                 this.resetLoginForm();
                 this.setState({"error":"Invalid UserName and password"});
             }
-        }, 1500);
+        }, 1700);
     };
 
 resetLoginForm = () => {

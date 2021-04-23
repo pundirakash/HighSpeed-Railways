@@ -50,7 +50,7 @@ class Welcome extends React.Component{
       <Row style={{"padding":50}}>
       <Col>
       <Carousel className="">
-  <Carousel.Item interval={1000}>
+  <Carousel.Item interval={500}>
     <img
       className="d-block w-100 rounded"
       src={Blanket}
@@ -70,7 +70,7 @@ class Welcome extends React.Component{
       <h3>One Click Cancellation</h3>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item>
+  <Carousel.Item interval={500}>
     <img
       className="d-block w-100 rounded"
       src={Lounge}

@@ -15,6 +15,7 @@ import Bookings from './components/Booking/Bookings'
 import BookingStatus from './components/Booking/BookingStatus';
 import BookingSuccess from './components/Booking/BookingSuccess';
 import NavigationBar from './components/NavigationBar';
+import AboutMe from './components/User/AboutMe';
 function App() {
 
 
@@ -42,6 +43,7 @@ function App() {
       <Route path="/allBookings"  component={Bookings}/>
       <Route path="/getStatus/:id" component={BookingStatus}/>
       <Route path="/bookingSuccess" component={BookingSuccess}/>
+      <Route path="/aboutMe" component={AboutMe}/>
       </Switch>
       </Container>
       <Container fluid style={{"padding":0}}>

@@ -69,7 +69,7 @@ class NavigationBar extends Component {
                 <NavDropdown title=<FontAwesomeIcon icon={faUser}/> className="">
                 <Link to={"/userProfile"} className="nav-link text-dark">Profile</Link>
                 <NavDropdown.Divider />
-                <Link to={"/aboutUs"} className="nav-link text-dark">About Us</Link>
+                <Link to={"/aboutMe"} className="nav-link text-dark">About Us</Link>
                 </NavDropdown>
                 </Nav>
                 <Nav className="navbar-right">
