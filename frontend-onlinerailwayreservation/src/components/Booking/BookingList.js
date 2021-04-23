@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import '../Style.css';
-import {Card,Table,ButtonGroup,Button} from 'react-bootstrap';
+import {Card,Table,ButtonGroup,Button,Row} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList,faWindowClose} from '@fortawesome/free-solid-svg-icons'
 import MyToast from "../MyToast";
 import {connect} from 'react-redux';
 import {getUserBookings,cancelBooking} from '../../services/index'
+import ReactLoading from 'react-loading'
 
 class BookingList extends Component {
 
   constructor(props){
     super(props);
     this.state={
-      bookings:[]
+      bookings:[],
+      isLoading:true
     };
   }
 
@@ -27,10 +29,11 @@ class BookingList extends Component {
       let booking=this.props.bookingObject.booking;
       if(booking!=null){
           this.setState({
-            bookings:booking
+            bookings:booking,
+            isLoading:false
           });
         }
-    },1000)
+    },2000)
   }
 
   cancelBooking=(id)=>{
@@ -53,6 +56,11 @@ class BookingList extends Component {
       <div style={{"display":this.state.show?"block":"none"}}>
       <MyToast show={this.state.show}  message={"Booking Cancelled Successfully"} type={"danger"}/>
       </div>
+      {this.state.isLoading ? (
+        <Row allign="center">
+            <ReactLoading type={"bars"} color={"white"}/>
+          </Row>
+        ) :(
       <Card className={"border borderless bg-light text-dark"}>
       <Card.Header><FontAwesomeIcon icon={faList} /> Bookings</Card.Header>
       <Card.Body>
@@ -98,6 +106,7 @@ class BookingList extends Component {
 </Table>
       </Card.Body>
       </Card>
+    )}
       </div>
     );
   }

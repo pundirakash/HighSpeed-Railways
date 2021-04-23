@@ -1,11 +1,11 @@
 import './App.css';
 import Welcome from './components/Welcome';
 import Footer from './components/Footer'
-import Train from './components/Train'
-import TrainList from './components/TrainList'
+import Train from './components/Train/Train'
+import TrainList from './components/Train/TrainList'
 import Login from './components/User/Login'
 import Register from './components/User/Register'
-import {Container,Row,Col} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import QueryTrainList from './components/Train/QueryTrainList';
 import BookTicket from './components/Booking/BookTicket';
@@ -29,19 +29,19 @@ function App() {
       <Container fluid style={{"padding":0}}>
       <Switch>
       <Route path="/" exact component={Welcome}/>
-      <Route path="/addTrain" exact component={Train}/>
-      <Route path="/edit/:id" exact component={Train}/>
-      <Route path="/queryTrain/:sourceStation/:destinationStation/:journeyDate" exact component={QueryTrainList}/>
-      <Route path="/trainList" exact component={TrainList}/>
-      <Route path="/register" exact component={Register}/>
-      <Route path="/login" exact component={Login}/>
-      <Route path="/logout" exact component={Login}/>
-      <Route path="/bookingList" exact component={BookingList}/>
-      <Route path="/userProfile" exact component={UserProfile}/>
-      <Route path="/bookTicket/:id" exact component={BookTicket}/>
-      <Route path="/allBookings" exact component={Bookings}/>
-      <Route path="/getStatus/:id" exact component={BookingStatus}/>
-      <Route path="/bookingSuccess" exact component={BookingSuccess}/>
+      <Route path="/addTrain"  component={Train}/>
+      <Route path="/edit/:id" component={Train}/>
+      <Route path="/queryTrain/:sourceStation/:destinationStation/:journeyDate" component={QueryTrainList}/>
+      <Route path="/trainList"  component={TrainList}/>
+      <Route path="/register"  component={Register}/>
+      <Route path="/login"  component={Login}/>
+      <Route path="/logout"  component={Login}/>
+      <Route path="/bookingList"  component={BookingList}/>
+      <Route path="/userProfile"  component={UserProfile}/>
+      <Route path="/bookTicket/:id" component={BookTicket}/>
+      <Route path="/allBookings"  component={Bookings}/>
+      <Route path="/getStatus/:id" component={BookingStatus}/>
+      <Route path="/bookingSuccess" component={BookingSuccess}/>
       </Switch>
       </Container>
       <Container fluid style={{"padding":0}}>

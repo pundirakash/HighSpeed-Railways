@@ -2,9 +2,9 @@ import React from 'react';
 import {Card,Form,Button,Col} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave,faPlusSquare,faUndo,faList,faEdit } from '@fortawesome/free-solid-svg-icons'
-import MyToast from "./MyToast";
+import MyToast from "../MyToast";
 import {connect} from 'react-redux';
-import {saveTrain,fetchTrain,updateTrain} from '../services/index'
+import {saveTrain,fetchTrain,updateTrain} from '../../services/index'
 
 class Train extends React.Component{
 
@@ -132,7 +132,7 @@ class Train extends React.Component{
   render()
   {
 
-    const {name,trainId,sourceStation,destinationStation,fare,capacity,journeyDate,arrives,departs,status}=this.state;
+    const {name,trainId,sourceStation,destinationStation,fare,capacity,journeyDate,arrives,departs}=this.state;
     return(
       <div>
       <div style={{"display":this.state.show?"block":"none"}}>

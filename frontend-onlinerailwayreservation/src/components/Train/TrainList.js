@@ -1,13 +1,14 @@
 import React from 'react';
-import './Style.css'
+import '../Style.css'
 import {Link} from 'react-router-dom';
-import {Card,Table,ButtonGroup,Button,InputGroup,FormControl} from 'react-bootstrap';
+import {Card,Table,ButtonGroup,Button,InputGroup,FormControl,Row} from 'react-bootstrap';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList,faEdit,faTrash,faStepBackward,faStepForward,faFastForward,faFastBackward} from '@fortawesome/free-solid-svg-icons'
-import MyToast from "./MyToast";
+import MyToast from "../MyToast";
 import {connect} from 'react-redux';
-import {deleteTrain} from '../services/index'
+import {deleteTrain} from '../../services/index'
+import ReactLoading from 'react-loading'
 
 class TrainList extends React.Component{
 
@@ -16,7 +17,8 @@ class TrainList extends React.Component{
     this.state={
       trains:[],
       currentPage:1,
-      trainsPerPage:5
+      trainsPerPage:5,
+      isLoading:true
     };
   }
 
@@ -68,7 +70,7 @@ class TrainList extends React.Component{
     axios.get("http://localhost:8082/trainApi/v1/viewTrains")
     .then(response=>response.data)
     .then((data)=>{
-      this.setState({trains:data})
+      this.setState({trains:data,isLoading:false})
     });
 
   }
@@ -101,6 +103,11 @@ class TrainList extends React.Component{
       <div style={{"display":this.state.show?"block":"none"}}>
       <MyToast show={this.state.show}  message={"Train Deleted Successfully"} type={"danger"}/>
       </div>
+      {this.state.isLoading ? (
+        <Row allign="center">
+            <ReactLoading type={"bars"} color={"white"}/>
+          </Row>
+        ) :(
       <Card className={"border borderless bg-light text-dark"}>
       <Card.Header><FontAwesomeIcon icon={faList} /> Train List</Card.Header>
       <Card.Body>
@@ -180,7 +187,7 @@ class TrainList extends React.Component{
 
       </Card.Footer>
       </Card>
-
+    )}
       </div>
 
     )

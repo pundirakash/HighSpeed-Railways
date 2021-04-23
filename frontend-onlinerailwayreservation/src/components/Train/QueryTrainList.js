@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../Style.css';
 import {Link} from 'react-router-dom';
-import {Card,Table,Container,Col,Row} from 'react-bootstrap';
+import {Card,Table,Row} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList} from '@fortawesome/free-solid-svg-icons'
 import {connect} from 'react-redux';

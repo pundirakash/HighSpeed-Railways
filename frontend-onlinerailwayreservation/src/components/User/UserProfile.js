@@ -1,10 +1,11 @@
 import React from 'react';
-import {Card,Form,Button,Col} from 'react-bootstrap';
+import {Card,Form,Button,Col,Row} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave,faEdit } from '@fortawesome/free-solid-svg-icons'
 import MyToast from "../MyToast";
 import {connect} from 'react-redux';
 import {getUser,updateUser} from '../../services/index'
+import ReactLoading from 'react-loading'
 
 class UserProfile extends React.Component {
 
@@ -14,7 +15,8 @@ class UserProfile extends React.Component {
       id:'',
       userName:'',
       email:'',
-      password:''
+      password:'',
+      isLoading:true
     }
     this.userChange=this.userChange.bind(this);
   }
@@ -41,7 +43,8 @@ getUser=()=>{
           userName:user.userName,
           email:user.email,
           password:user.password,
-          role:user.roles
+          role:user.roles,
+          isLoading:false
 
         });
       }
@@ -81,6 +84,11 @@ updateUser=event=>{
       <div style={{"display":this.state.show?"block":"none"}}>
       <MyToast show={this.state.show} message={"User Updated Successfully"} type={"success"}/>
       </div>
+      {this.state.isLoading ? (
+        <Row allign="center">
+            <ReactLoading type={"bars"} color={"white"}/>
+          </Row>
+        ) :(
       <Card className={"border borderless bg-light text-dark"}>
       <Card.Header> <FontAwesomeIcon icon={faEdit}/> Update your Profile</Card.Header>
 
@@ -112,9 +120,13 @@ updateUser=event=>{
       <Button size="lg" variant="primary"  type="submit">
       <FontAwesomeIcon icon={faSave}/>Update
       </Button>
+
       </Card.Footer>
+      <h2>Do you Know?</h2>
+      <h1>"1 lakh+ users daily visit our website"</h1>
       </Form>
       </Card>
+    )}
       </div>
     );
   }

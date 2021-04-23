@@ -215,8 +215,12 @@ passengerChange=event=>{
 
 
 </Form.Row>
+{passengerList.length<6?
 <Button size="sm" className="btn"  type="submit">
+<FontAwesomeIcon icon={faPlusSquare}/> Add Passenger </Button>:
+<Button size="sm" className="btn"  type="submit" disabled>
 <FontAwesomeIcon icon={faPlusSquare}/> Add Passenger </Button>
+}
 </Form>
 <br/>
 {/*Passenger List*/}
