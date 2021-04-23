@@ -41,7 +41,8 @@ public class UserInformationServiceApplicationTests {
 	public void createTest() {
 		List<Booking> list=new ArrayList<Booking>();
 		User user=new User(1,"user1","pwd1","a@gmail.com",true,"ROLE_USER",list);
-		
+		Optional<User> opt=Optional.empty();
+		when(userRepository.findByUserName(user.getUserName())).thenReturn(opt);
 		userService.create(user);
 		verify(userRepository,times(1)).insert(user);
 	}

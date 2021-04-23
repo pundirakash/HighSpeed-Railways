@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Row, Col, Card, Form, InputGroup, FormControl, Button,Container} from 'react-bootstrap';
+import {Row, Col, Card, Form, InputGroup, FormControl, Button,Container,Alert} from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faEnvelope, faLock, faUndo, faUserPlus, faUser} from "@fortawesome/free-solid-svg-icons";
 import {registerUser} from '../../services/index';
@@ -19,9 +19,10 @@ class Register extends Component {
             this.props.registerUser(this.state.userName, this.state.email,this.state.password);
             setTimeout(() => {
                 if(this.props.register.isRegistered) {
-                    return this.props.history.push("/login");
+                   this.props.history.push("/login");
                 } else {
                     this.resetRegisterForm();
+
                 }
             }, 2000);
         };
@@ -48,6 +49,7 @@ class Register extends Component {
           <Container fluid className="bg-light border">
             <Row className="justify-content-md-center" style={{"padding-top":50}}>
                 <Col xs={5}>
+                {this.props.register.isRegistered?<Alert variant="success">Registration Successful. Please login to your account</Alert>:null}
                     <Card className={"border borderless bg-light text-dark"}>
                         <Card.Header>
                             <FontAwesomeIcon icon={faUserPlus}/> Register

@@ -29,6 +29,7 @@ class NavigationBar extends Component {
     };
 
     render() {
+
       const {id}=this.state
         const guestLinks = (
             <>
@@ -77,6 +78,20 @@ class NavigationBar extends Component {
                 </Nav>
             </>
         );
+        var navLinks;
+        if(this.props.auth.isLoggedIn){
+          if(localStorage.role==="[ROLE_USER]"){
+            navLinks=userLinks;
+          }
+          else if (localStorage.role==="[ROLE_ADMIN]") {
+            navLinks=adminLinks;
+          }
+          else{
+            navLinks=guestLinks;
+          }
+        }else{
+          navLinks=guestLinks;
+        }
 
         return (
 
@@ -89,7 +104,8 @@ class NavigationBar extends Component {
                 <Link to={"/getStatus/"+id} className="text-light"><FontAwesomeIcon icon={faSearch}/></Link>
                 </Form>
                 </Nav>
-                {this.props.auth.isLoggedIn ? localStorage.role==="[ROLE_ADMIN]"?adminLinks:userLinks: guestLinks}
+                {navLinks}
+
             </Navbar>
         );
     };

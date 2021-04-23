@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.userservice.exceptions.UserAlreadyPresentException;
 import com.project.userservice.model.Booking;
 import com.project.userservice.model.User;
 import com.project.userservice.repository.UserRepository;
@@ -20,9 +21,12 @@ public class UserServiceImpl implements UserService {
 	SequenceGeneratorService service;
 
 	public void create(User user) {
+		if(userRepository.findByUserName(user.getUserName()).isPresent()) {
+			throw new UserAlreadyPresentException("Username is Already taken");
+		}else {
 		user.setId(service.getSequenceNumber(User.SEQUENCE_NAME));
 		userRepository.insert(user);
-		
+		}
 	}
 
 
