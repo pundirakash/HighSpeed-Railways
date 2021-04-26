@@ -39,7 +39,7 @@ class QueryTrainList extends Component {
             isLoading:false
           });
         }
-    },1500)
+    },2500)
   }
 
 

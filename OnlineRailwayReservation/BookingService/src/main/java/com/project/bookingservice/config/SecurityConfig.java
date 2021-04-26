@@ -37,7 +37,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// TODO Auto-generated method stub
 		http.cors();
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers("/bookingApi/v1/getBooking/{bookingId}").permitAll().
+		http.authorizeRequests().antMatchers("/bookingApi/v1/getBooking/{bookingId}","/swagger-ui/**",
+				"/v3/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**").permitAll().
 		anyRequest().authenticated().
 		and().exceptionHandling().and().sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
