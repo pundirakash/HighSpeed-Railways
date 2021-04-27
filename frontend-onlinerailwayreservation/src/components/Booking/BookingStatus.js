@@ -6,7 +6,6 @@ import { faList} from '@fortawesome/free-solid-svg-icons'
 import {connect} from 'react-redux';
 import {getBookingById} from '../../services/index'
 import ReactLoading from 'react-loading'
-import India from '../../assets/images/India.jpg'
 
 class BookingStatus extends Component {
 

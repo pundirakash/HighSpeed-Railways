@@ -73,7 +73,7 @@ class QueryTrain extends Component {
 
       </Card.Body>
       <Card.Footer style={{textAlign:"right"}}>
-      {journeyDate==="" && sourceStation===destinationStation? <Link to={"queryTrain/"+sourceStation+"/"+destinationStation+"/"+journeyDate} className="btn btn-primary btn-lg disabled">Search</Link>:
+      {journeyDate==="" || sourceStation===destinationStation? <Link to={"queryTrain/"+sourceStation+"/"+destinationStation+"/"+journeyDate} className="btn btn-primary btn-lg disabled">Search</Link>:
       <Link to={"queryTrain/"+sourceStation+"/"+destinationStation+"/"+journeyDate} className="btn btn-primary btn-lg">Search</Link>}
       </Card.Footer>
       </Form>

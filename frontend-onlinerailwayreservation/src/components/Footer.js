@@ -1,8 +1,6 @@
 import React from 'react';
 import './Style.css'
-import {Navbar,Container,Col,Row} from 'react-bootstrap';
-import IndiaA from '../assets/images/India.jpg'
-import IndiaB from '../assets/images/IndiaBanner.jpg'
+import {Container} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook,faTwitter,faInstagram} from '@fortawesome/free-brands-svg-icons'
 

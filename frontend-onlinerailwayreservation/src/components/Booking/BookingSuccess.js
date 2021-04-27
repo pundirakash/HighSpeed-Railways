@@ -4,7 +4,7 @@ import { faCheckCircle} from '@fortawesome/free-solid-svg-icons'
 import QR from '../../assets/images/mailus.png'
 import {Link} from 'react-router-dom';
 import '../Style.css'
-import {Card,Table,Form,Col,Button,Jumbotron} from 'react-bootstrap';
+import {Jumbotron} from 'react-bootstrap';
 
 class BookingSuccess extends Component {
   render() {
@@ -20,7 +20,7 @@ class BookingSuccess extends Component {
   <br/>
   <br/>
   <p>Scan QR code for any query</p>
-  <img src={QR}/>
+  <img src={QR} alt="QR Code"/>
 </Jumbotron>
     );
   }

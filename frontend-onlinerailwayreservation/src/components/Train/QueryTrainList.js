@@ -85,9 +85,10 @@ class QueryTrainList extends Component {
       <td>{train.journeyDate}</td>
       <td>{train.arrives}</td>
       <td>{train.departs}</td>
-
+      {train.capacity>=1?
       <Link to={localStorage.role==="[ROLE_USER]"?"/bookTicket/"+train.id:"/login"} className="btn btn-primary">Book</Link>
-
+      :null
+}
       </tr>
     ))
   }
